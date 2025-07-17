@@ -11,12 +11,12 @@ POST http://localhost:3000/songs
 Content-Type: application/json
 
 {
-    "title": "Flying Alone",
-    "artists": ["Sid Kataria"],
-    "album": "Flying Alone - Single",
-    "releaseDate": "2020-01-01",
+    "title": "Pink Moon",
+    "artists": [2],
+    "album": "Pink Moon - Single",
+    "releaseDate": "1972-01-01",
     "duration": "05:04",
-    "lyrics": "Flying Alone is a song by Sid Kataria. He wrote the lyrics."
+    "lyrics": "Pink Moon is a song by Nick Drake. He wrote the lyrics."
 }
 
 ### update() method
@@ -25,3 +25,21 @@ PUT http://localhost:3000/songs/1
 ### delete() method 
 DELETE http://localhost:3000/songs/1   
 
+### create playlist
+POST http://localhost:3000/playlist
+Content-Type: application/json
+
+{
+    "name": "Sids Playlist",
+    "songIds": [2, 3, 4, 5, 6, 7],
+    "user": 1
+}
+
+### findAll playlists
+GET http://localhost:3000/playlist
+
+### findOne playlist
+GET http://localhost:3000/playlist/1 
+
+### delete playlist
+DELETE http://localhost:3000/playlist/1

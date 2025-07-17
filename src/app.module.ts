@@ -9,13 +9,15 @@ import { DataSource } from 'typeorm';
 import { Song } from './songs/song.entity';
 import { User } from './user/user.entity';
 import { Artist } from './artist/artist.entity';
+import { Playlist } from './playlist/playlist.entity';
+import { PlaylistModule } from './playlist/playlist.module';
 
 
 const devConfig = {port: 3000};
 const prodConfig = {port: 400};
 
 @Module({
-  imports: [SongsModule, TypeOrmModule.forRoot(
+  imports: [SongsModule, PlaylistModule, TypeOrmModule.forRoot(
     {
       database: 'spotify-clone',
       type: 'postgres',
@@ -24,7 +26,7 @@ const prodConfig = {port: 400};
       username: 'postgres',
       password: 'sql123',
       synchronize: true,
-      entities: [Song, User, Artist],
+      entities: [Song, User, Artist, Playlist],
     })],
   controllers: [AppController],
   providers: [AppService, DevConfigService,
