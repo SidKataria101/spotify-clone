@@ -11,6 +11,8 @@ import { User } from './user/user.entity';
 import { Artist } from './artist/artist.entity';
 import { Playlist } from './playlist/playlist.entity';
 import { PlaylistModule } from './playlist/playlist.module';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 
 const devConfig = {port: 3000};
@@ -27,7 +29,7 @@ const prodConfig = {port: 400};
       password: 'sql123',
       synchronize: true,
       entities: [Song, User, Artist, Playlist],
-    })],
+    }), AuthModule, UserModule],
   controllers: [AppController],
   providers: [AppService, DevConfigService,
     {
