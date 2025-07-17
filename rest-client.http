@@ -1,0 +1,27 @@
+GET http://localhost:3000/
+
+### findAll() method
+GET http://localhost:3000/songs?page=1&limit=2
+
+### findOne() method
+GET http://localhost:3000/songs/2
+
+### create() method
+POST http://localhost:3000/songs
+Content-Type: application/json
+
+{
+    "title": "Flying Alone",
+    "artists": ["Sid Kataria"],
+    "album": "Flying Alone - Single",
+    "releaseDate": "2020-01-01",
+    "duration": "05:04",
+    "lyrics": "Flying Alone is a song by Sid Kataria. He wrote the lyrics."
+}
+
+### update() method
+PUT http://localhost:3000/songs/1
+
+### delete() method 
+DELETE http://localhost:3000/songs/1   
+
