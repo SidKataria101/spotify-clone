@@ -39,7 +39,18 @@ Content-Type: application/json
 GET http://localhost:3000/playlist
 
 ### findOne playlist
-GET http://localhost:3000/playlist/1 
+GET http://localhost:3000/playlist/2
 
 ### delete playlist
 DELETE http://localhost:3000/playlist/1
+
+### signup
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+    "firstName": "Nick",
+    "lastName": "Drake",
+    "email": "nick@gmail.com",
+    "password": "123456"
+}
