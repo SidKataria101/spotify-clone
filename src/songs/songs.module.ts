@@ -6,9 +6,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Song } from './song.entity';
 import { CreateSongsDTO } from './songs-dto/create-song-dto';
 import { UpdateSongsDTO } from './songs-dto/update-songs-dto';
+import { Artist } from 'src/artist/artist.entity';
+import { User } from 'src/user/user.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Song]), CreateSongsDTO, UpdateSongsDTO],
+  imports: [TypeOrmModule.forFeature([Song, Artist, User]), CreateSongsDTO, UpdateSongsDTO],
   controllers: [SongsController],
   providers: [
     {

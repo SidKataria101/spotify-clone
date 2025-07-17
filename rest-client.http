@@ -1,7 +1,7 @@
 GET http://localhost:3000/
 
 ### findAll() method
-GET http://localhost:3000/songs?page=1&limit=2
+GET http://localhost:3000/songs?page=1&limit=10
 
 ### findOne() method
 GET http://localhost:3000/songs/2

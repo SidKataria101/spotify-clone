@@ -53,12 +53,12 @@ export class SongsController {
 
     @Post()
     create(@Body() createSongsDTO: CreateSongsDTO) {
-        return this.songsRepository.save(createSongsDTO);
+        return this.songsService.create(createSongsDTO);
     }
 
     @Put(':id')
     update(@Param('id', ParseIntPipe) id: number, @Body() songDTO: UpdateSongsDTO): Promise<UpdateResult> {
-        return this.songsRepository.update(id, songDTO);
+        return this.songsService.update(id, songDTO);
     }
 
     @Delete(':id')
