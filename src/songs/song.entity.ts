@@ -1,6 +1,7 @@
 import { IsArray, IsDateString, IsMilitaryTime, IsNotEmpty, IsString } from "class-validator";
+import { Artist } from "src/artist/artist.entity";
 import { Playlist } from "src/playlist/playlist.entity";
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
 
 @Entity('songs')
 export class Song {
@@ -11,11 +12,6 @@ export class Song {
     @IsString()
     @IsNotEmpty()
     title: string;
-
-    @Column('varchar', {array: true})
-    @IsArray()
-    @IsNotEmpty()
-    artists: string[];
 
     @Column('varchar')
     @IsString()
@@ -34,6 +30,10 @@ export class Song {
 
     @Column('text')
     lyrics: string;
+
+    @ManyToMany(() => Artist, (artist) => artist.songs, {cascade: true})
+    @JoinTable({name: 'song_artist'})
+    artists: Artist[];
 }
 
 

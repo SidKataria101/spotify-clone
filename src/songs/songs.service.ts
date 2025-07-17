@@ -1,17 +1,23 @@
 import { DefaultValuePipe, HttpException, HttpStatus, Injectable, ParseIntPipe, Query } from '@nestjs/common';
 import { Song } from './song.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, UpdateResult } from 'typeorm';
+import { In, Repository, UpdateResult } from 'typeorm';
 import { CreateSongsDTO } from './songs-dto/create-song-dto';
 import { UpdateSongsDTO } from './songs-dto/update-songs-dto';
 import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginate';
+import { Artist } from 'src/artist/artist.entity';
+import { User } from 'src/user/user.entity';
 
 @Injectable()
 export class SongsService {
 
     constructor(
         @InjectRepository(Song)
-        private songRepository: Repository<Song>
+        private songRepository: Repository<Song>,
+        @InjectRepository(Artist)
+        private artistRepository: Repository<Artist>,
+        @InjectRepository(User)
+        private userRepository: Repository<User>
     ) {}
     //local storage - array of songs
     private readonly songs: any[] = [];
@@ -21,7 +27,11 @@ export class SongsService {
 
         const song = new Song();
         song.title = songDTO.title;
-        song.artists = songDTO.artists;
+        song.artists = await this.artistRepository.find({
+            where: {
+                id: In(songDTO.artists)
+            }
+        });
         song.album = songDTO.album;
         song.releaseDate = songDTO.releaseDate;
         song.duration = songDTO.duration;
@@ -87,7 +97,11 @@ export class SongsService {
                 throw new HttpException('Song not found', HttpStatus.NOT_FOUND);
             }
             song.title = songDTO.title;
-            song.artists = songDTO.artists;
+            song.artists = await this.artistRepository.find({
+                where: {
+                    id: In(songDTO.artists)
+                }
+            });
             song.album = songDTO.album;
             song.releaseDate = songDTO.releaseDate;
             song.duration = songDTO.duration;

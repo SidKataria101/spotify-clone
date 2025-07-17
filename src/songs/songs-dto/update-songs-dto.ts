@@ -8,7 +8,8 @@ export class UpdateSongsDTO {
 
     @IsArray()
     @IsOptional()
-    artists: string[];
+    @IsNumber({}, {each: true})
+    artists: number[];
 
     @IsString()
     @IsOptional()

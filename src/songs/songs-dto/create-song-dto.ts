@@ -8,7 +8,8 @@ export class CreateSongsDTO {
 
     @IsArray()
     @IsNotEmpty()
-    artists: string[];
+    @IsNumber({}, {each: true})
+    artists: number[];
 
     @IsString()
     @IsNotEmpty()
