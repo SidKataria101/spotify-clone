@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
@@ -24,5 +24,13 @@ export class UserService {
         const { password, ...userWithoutPassword } = savedUser;
         console.log('New user created : ', userWithoutPassword);
         return userWithoutPassword as User;
+    }
+
+    async findByEmail(email: string) : Promise<User> {
+        const user = await this.userRepository.findOne({ where: { email } });
+        if (!user) {
+            throw new UnauthorizedException('Invalid Email');
+        }
+        return user;
     }
 }

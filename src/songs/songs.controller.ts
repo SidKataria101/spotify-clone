@@ -1,14 +1,13 @@
 import { Controller, Get, Post, Put, Delete, Body, HttpException, HttpStatus, Param, ParseIntPipe, Inject, Query, DefaultValuePipe } from '@nestjs/common';
 import { SongsService } from './songs.service';
 import { CreateSongsDTO } from './songs-dto/create-song-dto';
-import { Connection } from 'src/common/constants/connections';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { Song } from './song.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UpdateSongsDTO } from './songs-dto/update-songs-dto';
 import { Pagination } from 'nestjs-typeorm-paginate';
 
-@Controller('songs')
+@Controller('song')
 export class SongsController {
     constructor(
         @InjectRepository(Song) 

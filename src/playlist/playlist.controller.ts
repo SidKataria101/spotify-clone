@@ -23,4 +23,9 @@ export class PlaylistController {
     delete(@Param('id') id: number): Promise<DeleteResult> {
         return this.playlistService.delete(id);
     }
+
+    @Get(':id')
+    findOne(@Param('id') id: number): Promise<Playlist | null> {
+        return this.playlistService.findOne(id);
+    }
 }
