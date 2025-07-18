@@ -1,13 +1,13 @@
 GET http://localhost:3000/
 
 ### findAll() method
-GET http://localhost:3000/songs?page=1&limit=10
+GET http://localhost:3000/song?page=1&limit=10
 
 ### findOne() method
-GET http://localhost:3000/songs/2
+GET http://localhost:3000/song/2
 
 ### create() method
-POST http://localhost:3000/songs
+POST http://localhost:3000/song
 Content-Type: application/json
 
 {
@@ -20,10 +20,10 @@ Content-Type: application/json
 }
 
 ### update() method
-PUT http://localhost:3000/songs/1
+PUT http://localhost:3000/song/1
 
 ### delete() method 
-DELETE http://localhost:3000/songs/1   
+DELETE http://localhost:3000/song/1   
 
 ### create playlist
 POST http://localhost:3000/playlist
@@ -39,7 +39,7 @@ Content-Type: application/json
 GET http://localhost:3000/playlist
 
 ### findOne playlist
-GET http://localhost:3000/playlist/2
+GET http://localhost:3000/playlist/3
 
 ### delete playlist
 DELETE http://localhost:3000/playlist/1
@@ -54,3 +54,18 @@ Content-Type: application/json
     "email": "nick@gmail.com",
     "password": "123456"
 }
+
+### login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "nick@gmail.com",
+    "password": "123456"
+}
+
+### profile
+GET http://localhost:3000/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pY2tAZ21haWwuY29tIiwic3ViIjo1LCJpYXQiOjE3NTI4Nzk1ODAsImV4cCI6MTc1Mjg4MzE4MH0.rFlX98nYTSYoKsl71HJjrVFU092jcsD2_Q1m_IdOdFI
+
+//Access token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pY2tAZ21haWwuY29tIiwic3ViIjo1LCJpYXQiOjE3NTI4Nzk1ODAsImV4cCI6MTc1Mjg4MzE4MH0.rFlX98nYTSYoKsl71HJjrVFU092jcsD2_Q1m_IdOdFI

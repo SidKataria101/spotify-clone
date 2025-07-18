@@ -43,4 +43,8 @@ export class PlaylistService {
             throw new Error(`Playlist with id ${id} not found`);
         }
     }
+
+    async findOne(id: number) {
+        return this.playlistRepository.findOne({ where: { id }, relations: ['songs', 'user'] });
+    }
 }   

@@ -14,12 +14,12 @@ import { PlaylistModule } from './playlist/playlist.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 
-
 const devConfig = {port: 3000};
 const prodConfig = {port: 400};
 
 @Module({
-  imports: [SongsModule, PlaylistModule, TypeOrmModule.forRoot(
+  imports: [SongsModule, PlaylistModule, 
+    TypeOrmModule.forRoot(
     {
       database: 'spotify-clone',
       type: 'postgres',
@@ -29,7 +29,9 @@ const prodConfig = {port: 400};
       password: 'sql123',
       synchronize: true,
       entities: [Song, User, Artist, Playlist],
-    }), AuthModule, UserModule],
+    }), 
+    AuthModule, UserModule
+  ],
   controllers: [AppController],
   providers: [AppService, DevConfigService,
     {
