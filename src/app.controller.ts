@@ -14,6 +14,7 @@ export class AppController {
   @Get('profile')
   @UseGuards(JwtGuard)
   getProfile(@Req() req) {
+    console.log(req.user, 'req.user', req.user.artistId, 'req.user.artistId');
     return req.user;
   }
 }

@@ -4,12 +4,15 @@ import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcryptjs';
 import { LoginUserDto } from './dto/login-dto';
 import { JwtService } from '@nestjs/jwt';
-
+import { ArtistService } from 'src/artist/artist.service';
+import { PayloadType } from './types';
+ 
 @Injectable()
 export class AuthService {
     constructor(
         private userService: UserService,
-        private jwtService: JwtService
+        private jwtService: JwtService,
+        private artistService: ArtistService
     ) {}
 
     async login(loginUserDto: LoginUserDto) : Promise<{accessToken: string}> {
@@ -21,7 +24,14 @@ export class AuthService {
         if (!isPasswordValid) {
             throw new UnauthorizedException('Invalid Password');
         }
-        const payload = { email: user.email, sub: user.userId };
+        
+        const payload: PayloadType = { email: user.email, userId: user.userId };
+
+        const artist = await this.artistService.findArtist(user.userId);
+        if (artist) {
+            payload.artistId = artist.id;
+        }
+        console.log(payload);
         return {
             accessToken: this.jwtService.sign(payload),
         };
