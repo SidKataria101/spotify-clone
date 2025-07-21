@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, UpdateResult } from 'typeorm';
 import { User } from './user.entity';
 import { CreateUserDto } from './dto/user-dto';
 import * as bcrypt from 'bcryptjs';
@@ -32,5 +32,31 @@ export class UserService {
             throw new UnauthorizedException('Invalid Email');
         }
         return user;
+    }
+
+    async findById(id: number) : Promise<User> {
+        const user = await this.userRepository.findOneBy({ userId: id });
+        if (!user) {
+            throw new UnauthorizedException('Invalid User');
+        }
+        return user;
+    }
+
+    async updateTwoFASecret(id: number, secret: string) : Promise<UpdateResult> {
+        return await this.userRepository.update(
+            { userId: id }, 
+            { 
+                twoFASecret: secret,
+                isTwoFAEnabled: true
+            });
+    }
+
+    async disable2FA(id: number) : Promise<UpdateResult> {
+        return await this.userRepository.update(
+            { userId: id }, 
+            { 
+                twoFASecret: undefined,
+                isTwoFAEnabled: false
+            });
     }
 }
