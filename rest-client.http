@@ -9,21 +9,22 @@ GET http://localhost:3000/song/2
 ### create() method
 POST http://localhost:3000/song
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNvbWVAZ21haWwuY29tIiwidXNlcklkIjo3LCJpYXQiOjE3NTMwNDcwMDcsImV4cCI6MTc1MzA1MDYwN30.pSRYDRDALyhOm7wPx_mQfT8MMtMMDv8FHK-k0UX3r_4
 
 {
-    "title": "Pink Moon",
-    "artists": [2],
-    "album": "Pink Moon - Single",
-    "releaseDate": "1972-01-01",
+    "title": "Some Song",
+    "artists": [7],
+    "album": "Some Song - Single",
+    "releaseDate": "2025-01-01",
     "duration": "05:04",
-    "lyrics": "Pink Moon is a song by Nick Drake. He wrote the lyrics."
+    "lyrics": "Some Song is a song by Some User. He wrote the lyrics."
 }
 
 ### update() method
 PUT http://localhost:3000/song/1
 
 ### delete() method 
-DELETE http://localhost:3000/song/1   
+DELETE http://localhost:3000/song/11
 
 ### create playlist
 POST http://localhost:3000/playlist
@@ -49,9 +50,9 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "firstName": "Nick",
-    "lastName": "Drake",
-    "email": "nick@gmail.com",
+    "firstName": "Some",
+    "lastName": "User",
+    "email": "some@gmail.com",
     "password": "123456"
 }
 
@@ -60,12 +61,21 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "nick@gmail.com",
+    "email": "some@gmail.com",
     "password": "123456"
 }
 
+### create artist
+POST http://localhost:3000/artist
+Content-Type: application/json
+
+{
+    "name": "Some Artist"
+}
+
+
 ### profile
 GET http://localhost:3000/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pY2tAZ21haWwuY29tIiwic3ViIjo1LCJpYXQiOjE3NTI4Nzk1ODAsImV4cCI6MTc1Mjg4MzE4MH0.rFlX98nYTSYoKsl71HJjrVFU092jcsD2_Q1m_IdOdFI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNvbWVAZ21haWwuY29tIiwidXNlcklkIjo3LCJpYXQiOjE3NTMwNDc2OTksImV4cCI6MTc1MzA1MTI5OX0.-gm2n4fq-twnK1s8ryS0eoRC9C1nYXUAfDyOUdtkhko
 
-//Access token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pY2tAZ21haWwuY29tIiwic3ViIjo1LCJpYXQiOjE3NTI4Nzk1ODAsImV4cCI6MTc1Mjg4MzE4MH0.rFlX98nYTSYoKsl71HJjrVFU092jcsD2_Q1m_IdOdFI
+//Access token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpbEBnbWFpbC5jb20iLCJ1c2VySWQiOjYsImlhdCI6MTc1MzA0NTM4NSwiZXhwIjoxNzUzMDQ4OTg1fQ.siu3IoTf9zFjd48YAQeaCzwngmi5E43t60JBV2diK00
