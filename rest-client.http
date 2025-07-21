@@ -61,7 +61,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "some@gmail.com",
+    "email": "sid@gmail.com",
     "password": "123456"
 }
 
@@ -76,6 +76,25 @@ Content-Type: application/json
 
 ### profile
 GET http://localhost:3000/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNvbWVAZ21haWwuY29tIiwidXNlcklkIjo3LCJpYXQiOjE3NTMwNDc2OTksImV4cCI6MTc1MzA1MTI5OX0.-gm2n4fq-twnK1s8ryS0eoRC9C1nYXUAfDyOUdtkhko
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNpZEBnbWFpbC5jb20iLCJ1c2VySWQiOjQsImlhdCI6MTc1MzA2NDg4MCwiZXhwIjoxNzUzMDY4NDgwfQ.N1lr3XFMTUePpDjH-kG6eeuccqK2RcNtGorlm7seO6w
 //Access token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpbEBnbWFpbC5jb20iLCJ1c2VySWQiOjYsImlhdCI6MTc1MzA0NTM4NSwiZXhwIjoxNzUzMDQ4OTg1fQ.siu3IoTf9zFjd48YAQeaCzwngmi5E43t60JBV2diK00
+
+### enable two fa
+GET http://localhost:3000/auth/enable-two-fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNpZEBnbWFpbC5jb20iLCJ1c2VySWQiOjQsImlhdCI6MTc1MzA2NjQ2NSwiZXhwIjoxNzUzMDcwMDY1fQ.NHxKpd5eU7idfsqeFqquaGIb9H0tS_AEBWz59TfaMcM
+
+### verify two fa
+POST http://localhost:3000/auth/verify-two-fa
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNpZEBnbWFpbC5jb20iLCJ1c2VySWQiOjQsImlhdCI6MTc1MzA2MzM2MCwiZXhwIjoxNzUzMDY2OTYwfQ.ciRGUhdx5-h7-5jEXF3P3KmzsGLHssD065ewm7KCHzw
+
+{
+    "token": "720938"
+}
+
+### disable two fa
+POST http://localhost:3000/auth/disable-two-fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNpZEBnbWFpbC5jb20iLCJ1c2VySWQiOjQsImlhdCI6MTc1MzA2MzM2MCwiZXhwIjoxNzUzMDY2OTYwfQ.ciRGUhdx5-h7-5jEXF3P3KmzsGLHssD065ewm7KCHzw
+
+
+//Secret for Sid user: KRRE42LUJ4ZES5CHJ5CVUL26OUTF4SK5G5AG6PDYHZYDQ2LBFZXA
