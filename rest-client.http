@@ -50,9 +50,9 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "firstName": "Some",
+    "firstName": "New",
     "lastName": "User",
-    "email": "some@gmail.com",
+    "email": "new@gmail.com",
     "password": "123456"
 }
 
@@ -95,6 +95,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNpZEBnb
 ### disable two fa
 POST http://localhost:3000/auth/disable-two-fa
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNpZEBnbWFpbC5jb20iLCJ1c2VySWQiOjQsImlhdCI6MTc1MzA2MzM2MCwiZXhwIjoxNzUzMDY2OTYwfQ.ciRGUhdx5-h7-5jEXF3P3KmzsGLHssD065ewm7KCHzw
+
+### get profile
+GET http://localhost:3000/auth/profile
+Authorization: Bearer a82bb281-9a0d-4b1c-bea5-3b8ee07184d6
 
 
 //Secret for Sid user: KRRE42LUJ4ZES5CHJ5CVUL26OUTF4SK5G5AG6PDYHZYDQ2LBFZXA

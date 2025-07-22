@@ -4,6 +4,7 @@ import { Repository, UpdateResult } from 'typeorm';
 import { User } from './user.entity';
 import { CreateUserDto } from './dto/user-dto';
 import * as bcrypt from 'bcryptjs';
+import { v4 as uuid4 } from 'uuid';
 
 @Injectable()
 export class UserService {
@@ -18,6 +19,7 @@ export class UserService {
         user.firstName = createUserDto.firstName;
         user.lastName = createUserDto.lastName;
         user.email = createUserDto.email;
+        user.apiKey = uuid4();
         user.password = await bcrypt.hash(createUserDto.password, salt);
         const savedUser = await this.userRepository.save(user);
         // Remove password before returning the user object
@@ -58,5 +60,13 @@ export class UserService {
                 twoFASecret: undefined,
                 isTwoFAEnabled: false
             });
+    }
+
+    async findByApiKey(apiKey: string) : Promise<User> {
+        const user = await this.userRepository.findOneBy({ apiKey });
+        if (!user) {
+            throw new UnauthorizedException('Invalid API key');
+        }
+        return user;
     }
 }

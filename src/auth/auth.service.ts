@@ -82,4 +82,12 @@ export class AuthService {
         await this.userService.disable2FA(userId);
     }
 
+    async validateUserByApiKey(apiKey: string) : Promise<User> {
+        const user = await this.userService.findByApiKey(apiKey);
+        if (!user) {
+            throw new UnauthorizedException('Invalid API key');
+        }
+        return user;
+    }
+
 }
