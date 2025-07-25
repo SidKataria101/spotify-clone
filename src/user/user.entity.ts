@@ -1,6 +1,6 @@
 import { Playlist } from 'src/playlist/playlist.entity';
 import { Exclude } from 'class-transformer';
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, IsNull } from 'typeorm';
 
 @Entity('user')
 export class User {
@@ -31,4 +31,14 @@ export class User {
 
     @Column({ nullable: true, type: 'text' })
     apiKey: string;
+
+    @Column({ nullable: true, type: 'text' })
+    phone: string;
+
+    @Column({ nullable: true, type: 'text' })
+    address: string;
+
+    @Column({ nullable: true, type: 'text' })
+    city: string;
+
 }
