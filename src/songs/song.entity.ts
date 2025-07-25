@@ -26,7 +26,7 @@ export class Song {
     @Column('time')
     @IsMilitaryTime()
     @IsNotEmpty()
-    duration: number;  
+    duration: string;  
 
     @Column('text')
     lyrics: string;
